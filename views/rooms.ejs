@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+  <title>Websocket</title>
+  <style type="text/css">
+  #chatbox{
+    width:300px;
+    height:140px;
+  }
+  </style>
+  <script type="text/javascript" src='/javascripts/vendor/jquery.js'></script>
+  
+  <script type="text/javascript" src='/javascripts/vendor/custom.modernizr.js'></script>
+  <script type="text/javascript" src="/javascripts/websocket.js"></script>
+  <script type="text/javascript" src="/javascripts/main.js"></script>
+  <script type="text/javascript" src="/javascripts/rooms.js"></script>
+  <script type="text/javascript" src="/javascripts/session.js"></script>
+  <script type="text/javascript" src="/javascripts/chat.js"></script>
+
+  </head>
+  <body onLoad="init();">
+  <form id="roomsPage">
+  <hr>BABBLE WEB<br><hr>
+  
+  
+  <% if(type=="public"){ %>
+    <div id="publicList">
+      Name: <input type="text" id="username" value="<%= username %>" disabled/>
+      <input type="button" value="Chat" id="gochat" /> <input type="button" value="Public Rooms" id="pubrooms" disabled/> <input type="button" name="vgc" value="Private Rooms" id="privaterooms"/>
+     
+      <hr>Existing Public Rooms <br><br>
+      <div class="showHide" style="display:none;">
+        Nickname: <input type="text" id="nickname" value="" />
+        <input type="button" value="Enter Room" name="muc" id="enterroom" />
+      </div>
+      <br><br>
+    </div>
+  <% }else{ %>
+    <div id="privateList">
+      Name: <input type="text" id="username" value="<%= username %>" disabled/>
+      <input type="button" value="Chat" id="gochat" /> <input type="button" value="Public Rooms" id="pubrooms" /> <input type="button" name="vgc" value="Private Rooms" id="privaterooms" disabled/>
+      
+      <hr>Existing Private Rooms <br><br>
+      
+      Room Name: <input type="text" id="newroomname" value=""/>
+      <input type="button" value="Create New Room" id="newroom" /> 
+      <br><br>
+      <div class="showHide" style="display:none;">
+        <input type="button" value="Enter Room" name="vgc" id="enterroom" />
+      </div>
+      <br>
+      
+    </div>
+  <% } %>
+  
+  <div id="rooms">
+    <select id="list_rooms" size="10">
+    </select>
+  </div> 
+ 
+   
+  </form>
+  </body>
+</html>

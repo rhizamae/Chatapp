@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+  <title>Websocket</title>
+  <style type="text/css">
+  #chatbox{
+    width:300px;
+    height:140px;
+  }
+  </style>
+  <script type="text/javascript" src='/javascripts/vendor/jquery.js'></script>
+  
+  <script type="text/javascript" src='/javascripts/vendor/custom.modernizr.js'></script>
+  <script type="text/javascript" src="/javascripts/websocket.js"></script>
+  <script type="text/javascript" src="/javascripts/main.js"></script>
+  <script type="text/javascript" src="/javascripts/rooms.js"></script>
+  <script type="text/javascript" src="/javascripts/session.js"></script>
+  <script type="text/javascript" src="/javascripts/chat.js"></script>
+
+  </head>
+  <body onLoad="init();">
+  <form id="chatPage">
+  <hr>BABBLE WEB<br><hr>
+  
+  
+  Name: <input type="text" id="username" value="<%= username %>" disabled/>
+  <input type="button" value="Chat" id="gochat" disabled/> <input type="button" value="Public Rooms" id="pubrooms" /> <input type="button" value="Private Rooms" id="privaterooms"/>
+  <hr>
+  <% if(roomname!="none"){ %>
+      <% if(type=="muc"){ %>
+        <div id="customDisplay">
+          Nickname: <input type="text" id="nickname" value="" disabled/>
+          To: <input type="text" id="sendto" value="<%= roomname %>" disabled/>
+          <input type="button" value="Leave Room" id="leaveroom"  name="muc" />
+          <br><hr>
+          Message: <input type="text" id="msg" style="width:280px;"/>
+          <input type="button" value="SEND" class="send"  name="groupchat" />
+          <hr>Conversation <br><br> 
+          <div id="output"></div>
+        </div>
+      <% }else{ %>
+          <div id="customDisplay">
+          
+            <% if(affiliation=="owner"){ %>
+              Invite: <input type="text" id="invitedname" value="" />
+              <input type="button" value="Invite to Room" id="inviteroom" />
+              <br><hr>
+             <% } %>
+            
+            To: <input type="text" id="sendto" name="<%= roomname %>" value="<%= roomname.split("@")[0] %>" disabled/>
+            <input type="button" value="Leave Room" id="leaveroom"  name="vgc" />
+            <br><hr>
+            Message: <input type="text" id="msg" style="width:280px;"/>
+            <input type="button" value="SEND" class="send"  name="vgc" />
+            <hr>Conversation <br><br> 
+            <div id="output"></div>
+          </div>
+      <% } %>
+      
+  <% }else{ %>
+      <div id="customDisplay">
+        To: <input type="text" id="sendto" />
+        Message: <input type="text" id="msg" style="width:280px;"/>
+        <input type="button" value="SEND" class="send" name="chat" />
+        <hr>Conversation <br><br> 
+        <div id="output"></div>
+      </div>
+   <% } %>
+  
+   
+  </form>
+  </body>
+</html>

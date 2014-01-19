@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>Websocket</title>
+  <style type="text/css">
+  #chatbox{
+    width:300px;
+    height:140px;
+  }
+  </style>
+  <script type="text/javascript" src='/javascripts/vendor/jquery.js'></script>
+  <script type="text/javascript" src='/javascripts/vendor/custom.modernizr.js'></script>
+  <script type="text/javascript" src="/javascripts/session.js"></script>
+  
+  </head>
+  <body >
+
+  <hr>LOGIN PAGE<br>
+  <hr>
+  <form id="login" enctype='multipart/form-data' action='/login' method='post'>
+    Username: <input type="text" name="username" />
+    Password: <input type="password" name="password"/>
+    <input type="submit" id="connect" value="Connect"/><br>
+  </form>
+ 
+  </body>
+</html>
